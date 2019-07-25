@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Введіть своє ім'я";
+}
+
+<div id="takeName">
+
+    @using (Html.BeginForm("ViewQuestion", "Questions", FormMethod.Get))
+    {
+
+        <select id="themeQuestion" name="themeQuestion" hidden>
+            <option selected id="themeQ"></option>
+        </select>
+        <p>Ваше ім'я:</p>
+        <input type="text" id="personName" name="personName" required /><br /><br />
+        <input type="submit" value="Пройти тест" onclick="fun()" />
+    }
+
+</div>
+
+<script>
+    localStorage.setItem("themeName", @ViewBag.Theme);
+
+    function fun() {
+
+
+        var el = document.getElementById("themeQ");
+        el.value = localStorage.getItem("themeName");
+
+    }
+    window.onbeforeunload = function () {
+        localStorage.removeItem("themeName");
+    }
+
+</script>

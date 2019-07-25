@@ -1,0 +1,29 @@
+﻿@model List<Testing.Models.Question>
+
+@{
+    ViewBag.Title = "Результат";
+}
+
+
+
+<p id="Question">
+    Ваш результат: @ViewBag.YourPoints <br />
+    @Html.ActionLink("На головну", "ViewPage")
+</p>
+<br />
+<hr />
+@{
+    var count = 0;
+}
+
+
+
+
+@foreach (var item in Model)
+{
+    count++;
+    <p>@count . @item.NameQuestion</p>
+    
+    <p>Ваша відповідь: @ViewBag.YourAnswer[count-1]</p>
+    <p>Правильна відповідь: @item.IsTrue</p>
+}

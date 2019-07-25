@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Testing.Models.Question>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddNewTheme")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Theme.ThemeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameQuestion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnswerFirst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnswerSecond)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnswerThird)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnswerForty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsTrue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Theme.ThemeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameQuestion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnswerFirst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnswerSecond)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnswerThird)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnswerForty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsTrue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

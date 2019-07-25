@@ -1,0 +1,25 @@
+﻿@model List<Testing.Models.Category>
+
+@{
+    ViewBag.Title = "Головна";
+}
+
+
+<div class="viewPage" style="float:left;width:100%;">
+    @foreach (var category in Model)
+    {
+
+        using (Html.BeginForm("ViewTheme", "Questions", FormMethod.Post))
+        {
+            <select id="category" name="category" hidden>
+                <option selected>@category.Id</option>
+            </select>
+            <input type="submit" id="btnCategory" value="@category.NameCategory" style="background-image: url('@category.ImagePath');"/>
+
+        }
+    }
+</div>
+    @*@Html.DropDownList("category", ViewBag.AllCategories as SelectList, "Всі категорії", new { onchange = "this.form.submit();"})*@
+   
+
+

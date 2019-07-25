@@ -1,0 +1,62 @@
+﻿@model Testing.Models.Theme
+@using Testing.Models
+
+@{
+    ViewBag.Title = "Додавання теми";
+}
+
+
+
+@using (Html.BeginForm("AddNewTheme", "Questions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="Author">Ваше ім'я:</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+
+            @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.ThemeName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="ThemeName">Тема</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ThemeName, new { htmlAttributes = new { @class = "form-control", required = "required", maxlength = "18" } })
+
+            @Html.ValidationMessageFor(model => model.ThemeName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="CategoryId">Виберіть категорію</label>
+        <div class="col-md-10">
+            @Html.DropDownList("CategoryId", ViewBag.CategoryId as SelectList, "Категорії", new { @class = "form-control", required = "required" })
+
+            @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="ImagePath">Додайте картинку</label>
+        <div class="col-md-10">
+
+            <input type="file" name="ImageFile" required />
+            @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    @*@Html.DropDownList("CategoryId", ViewBag.CategoryId as SelectList,"Категорії", new { @class = "form-control" })*@
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Додати тему" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+<br /><br /><br /><br /><br /><br />
+<hr />

@@ -1,0 +1,74 @@
+﻿@model Testing.Models.Question
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Theme.ThemeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Theme.ThemeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameQuestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameQuestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerFirst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnswerFirst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerSecond)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnswerSecond)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerThird)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnswerThird)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerForty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnswerForty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsTrue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsTrue)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

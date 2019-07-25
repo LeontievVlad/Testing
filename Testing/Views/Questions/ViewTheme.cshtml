@@ -1,0 +1,24 @@
+﻿@model List<Testing.Models.Theme>
+
+@{
+    ViewBag.Title = "Теми";
+}
+
+<br />
+<p>@ViewBag.NoItems</p>
+
+<div class="viewPage" style="float:left;width:100%;">
+    @foreach (var theme in Model)
+    {
+
+        using (Html.BeginForm("TakeYourName", "Questions", FormMethod.Post))
+        {
+            <select id="theme" name="theme" hidden>
+                <option selected>@theme.Id</option>
+            </select>
+            <p>Автор: @theme.Author</p>
+            <input type="submit" id="btnCategory" value="@theme.ThemeName" style="background-image: url('@theme.ImagePath');" />
+
+        }
+    }
+</div>

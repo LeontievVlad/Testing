@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Testing.Models.Question>
+
+@{
+    ViewBag.Title = "Тестування";
+}
+
+<input type="button" value="@ViewBag.Time" id="time" name="time" hidden />
+
+
+<script>
+    var counter = document.getElementById("time");
+    
+    //counter.value *= 3600;
+    var timeNow = counter.value;
+    function timer() {
+
+        var seconds = counter.value;
+        // multiply by 1000 because Date() requires miliseconds
+        var date = new Date(seconds * 1000);
+        var hh = date.getUTCHours();
+        var mm = date.getUTCMinutes();
+        var ss = date.getSeconds();
+        // If you were building a timestamp instead of a duration, you would uncomment the following line to get 12-hour (not 24) time
+        // if (hh > 12) {hh = hh % 12;}
+        // These lines ensure you have two-digits
+        if (hh < 10) { hh = "0" + hh; }
+        if (mm < 10) { mm = "0" + mm; }
+        if (ss < 10) { ss = "0" + ss; }
+        // This formats your string to HH:MM:SS
+        var t = hh + ":" + mm + ":" + ss;
+        document.getElementById("timer").innerHTML = t;
+        document.getElementById("allTimeOption").innerHTML = timeNow;
+        counter.value--;
+        timeNow = counter.value;
+        if (counter.value == -2) {
+            if (confirm("час вийшов")) {
+
+                window.location.replace("/");
+
+            }
+            else {
+
+                window.location.replace("/");
+
+            }
+        }
+
+
+        setTimeout("timer()", 1000);
+
+    }
+    document.addEventListener("DOMContentLoaded", timer);
+
+
+
+
+    
+</script>
+
+
+@{
+    int count = ViewBag.Count;
+
+    
+}
+
+<div id="viewQuestion">
+    @using (Html.BeginForm("ViewQuestion", "Questions", FormMethod.Post))
+    {
+        
+        <div>
+
+            @foreach (var item in Model)
+            {
+
+
+            <div id="Question">
+                <span id="timer" name="timer">00:00:00</span><br />
+                @if (item.ImagePath != null)
+                {
+                    <img src="@Url.Content(item.ImagePath)" width="320" height="240" />
+                    @*<img src="~/Images/portfolio/minimalismo.jpg" width="320" height="240" />*@
+                }
+                else
+                {
+                    <img src="/Images/default.jpg" width="320" height="240" />
+                }
+                <select name="questionId" id="questionId" hidden>
+                    <option id="qId" selected>@item.Id</option>
+
+                </select>
+                <select id="themeId" name="themeId" hidden>
+                    <option id="tId" selected>@item.ThemeId</option>
+                </select>
+                <select id="categoryId" name="categoryId" hidden>
+                    <option id="cId" selected>@item.Theme.CategoryId</option>
+                </select>
+                <select name="questionCount" id="questionCount" hidden>
+                    <option id="qCount" selected>@count</option>
+                </select>
+                <select name="isTrue" id="isTrue" hidden>
+                    <option id="iTrue" selected>@item.IsTrue</option>
+                </select>
+                <select name="YourName" id="YourName" hidden>
+                    <option id="YN" selected>@ViewBag.Name</option>
+                </select>
+                <select name="allTime" id="allTime" hidden>
+                    <option selected id="allTimeOption">1</option>
+                </select>
+
+
+                <p>@count . @item.NameQuestion</p>
+
+                <label><input type="radio" name="answerY" id="Answer" value="@item.AnswerFirst" required />  @item.AnswerFirst </label><br />
+                <label><input type="radio" name="answerY" id="Answer" value="@item.AnswerSecond" required /> @item.AnswerSecond</label><br />
+                <label><input type="radio" name="answerY" id="Answer" value="@item.AnswerThird" required />  @item.AnswerThird </label><br />
+                <label><input type="radio" name="answerY" id="Answer" value="@item.AnswerForty" required />  @item.AnswerForty </label><br /><br />
+
+
+
+            </div>
+                break;
+            }
+
+            <input type="submit" value="Відповісти" id="send" />
+        </div>
+
+    }
+
+
+</div>

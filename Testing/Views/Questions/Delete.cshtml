@@ -1,0 +1,80 @@
+﻿@model Testing.Models.Question
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Theme.ThemeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Theme.ThemeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameQuestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameQuestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerFirst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnswerFirst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerSecond)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnswerSecond)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerThird)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnswerThird)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerForty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnswerForty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsTrue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsTrue)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
